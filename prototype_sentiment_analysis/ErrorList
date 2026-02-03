@@ -1,0 +1,22 @@
+/*
+* ErrorList.java -- this is a dedicated class to handle errors, in compliance with the single responsibility principle. 
+* Right now, this is for a text-based menu system, so this will include color-coded output for the terminal. 
+* TODO: ALL OF THIS WILL EVENTUALLY HAVE COLOR CODED INPUT. The more complicated logic is why everything gets its own method. See DSA Spring 2025 code. 
+* @author James C. Fogg
+* @version 2026.02.03
+*/
+
+public class Error // Beginning of class ErrorList
+{
+    
+
+    private void invalidInput()
+    {
+        System.out.println("Invalid input; please enter valid input.");
+    }
+
+    private void invalidExit()
+    {
+        System.out.println("Something went wrong! Please try again.");
+    }
+} //End of class ErrorList
