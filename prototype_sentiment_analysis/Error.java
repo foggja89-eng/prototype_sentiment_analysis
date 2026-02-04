@@ -8,15 +8,13 @@
 
 public class Error // Beginning of class ErrorList
 {
-    
-
     private void invalidInput()
     {
-        System.out.println("Invalid input; please enter valid input.");
+        System.out.println(colors.getColor("yellow") + "Invalid input; please enter valid input.");
     }
 
     private void invalidExit()
     {
-        System.out.println("Something went wrong! Please try again.");
+        System.out.println(colors.getColor("yellow") + "Something went wrong! Please try again.");
     }
 } //End of class ErrorList

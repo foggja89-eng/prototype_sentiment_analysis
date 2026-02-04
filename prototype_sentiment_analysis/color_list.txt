@@ -1,0 +1,11 @@
+color_list.txt
+
+a collection of strings is used to load font colors. To use different colors in terminal output, the indices are as follows:
+0 - reset
+1 - black
+2 - green
+3 - yellow
+4 - blue
+5 - purple
+6 - cyan
+7 - white
