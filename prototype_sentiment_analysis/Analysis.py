@@ -3,3 +3,8 @@
 # I think I'm going to go with NLTK for this.
 # Author: James C. Fogg
 # version: 2026.02.03
+
+def analysis():
+    print("this is just placeholder output for analysis.py")
+
+analysis()

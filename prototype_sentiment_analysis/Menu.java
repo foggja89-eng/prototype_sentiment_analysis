@@ -6,12 +6,16 @@
 */
 
 import java.io.IOException;
-import java.io.InputstreamReader;
+import java.io.BufferedReader;
+import java .io.InputStream;
+import java.io.InputStreamReader;
+
+import java.lang.ProcessBuilder;
+import java.lang.Process;
+import java.lang.Thread;
 
 public class Menu //Beginning of class Menu
 {
-    private Input input = new Input();
-    private Error error = new Error();
 
     /*
     * Supporting method for the menu system to run.
@@ -23,16 +27,28 @@ public class Menu //Beginning of class Menu
     public void menuSystem(BufferedReader stdin, Input input, Error error) throws IOException
     {
         start();
+        byte choice;
 
         do
         {
             mainMenu();
+            choice = input.byteInput(stdin);
 
             try
             {
-                switch (input.byteInput(stdin))
+                switch (choice)
                 {
                 case 0: //handling logic for quitting the program.
+                    System.out.println("Are you sure you want to quit?");
+                    
+                    if (input.characterInput(stdin) == 'y')
+                    {
+                        choice = -2;
+                    }
+                    else
+                    {
+                        System.out.println("Returning to main menu...");
+                    }
 
                     break;
 
@@ -43,7 +59,7 @@ public class Menu //Beginning of class Menu
                     }
                     catch (Exception e)
                     {
-                        error.invalidExit();
+                        error.invalidExit(input);
                     }
                     break;
 
@@ -56,13 +72,13 @@ public class Menu //Beginning of class Menu
                     break;
 
                 default:
-                    error.invalidInput();
+                    error.invalidInput(input);
 
                 }
             }
             catch (Exception e)
             {
-                error.invalidExit();
+                error.invalidExit(input);
             }
 
         } while (choice != -2);
@@ -76,24 +92,25 @@ public class Menu //Beginning of class Menu
      * TODO: part of good design is keeping things private. Figure out if this needs to be public for the python code to work with it?
      * The filePath variable created for this will be used as arg1 for the python script.
      * @param Input input
-     * @param ErrorList error
+     * @param Error error
      * @param BufferedReader stdin
      * @throws IOException
      */
-    public void option1(Input input, ErrorList error, BufferedReader stdin) throws IOException
+    public void option1(Input input, Error error, BufferedReader stdin) throws IOException
     {
         System.out.println("Now selecting a new file to work with. What is the file path?");
 
         //Set up a new process for the python script to run sentiment analysis. the last parameter will be the file path of the text to work on.
         ProcessBuilder processBuilder = new ProcessBuilder("python3", "Analysis.py", input.generalInput(stdin));
-        process.start();
-        System.out.println(colors.getColor("blue") + "=====START OF ANALYSIS=====" + colors.getColor("reset"));
+        Process process = processBuilder.start();
+        System.out.println(input.getColor("blue") + "=====START OF ANALYSIS=====" + input.getColor("reset"));
 
         //Putting this in a try-catch block because this might be null.
         try
         {
-            //set up to grab output from the python program.
-            String line = stdin.read(process.getInputStream());
+            //set up to grab output from the python program. Couldn't just use the already existing BufferedReader object, need one just for the process. 
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line = reader.readLine();
 
             //if trying to grab the next line of output from the program is not null, print it out.
             while ((line = stdin.readLine()) != null)
@@ -101,12 +118,12 @@ public class Menu //Beginning of class Menu
                 System.out.println(line);
             }
 
-            System.out.println(colors.getColor("green") + "=====END OF ANALYSIS=====" + colors.getColor("reset"));
+            System.out.println(input.getColor("green") + "=====END OF ANALYSIS=====" + input.getColor("reset"));
         }
         catch (Exception e)
         {
             //error handling in case something goes wrong with the python code.
-            thread.currentThread().interrupt();
+            Thread.currentThread().interrupt();
             System.err.println("Python code was stopped.");
         }
     }
@@ -139,7 +156,7 @@ public class Menu //Beginning of class Menu
     private void mainMenu()
     {
         System.out.println("Main menu:\n"
-                           + "0. Quit"
+                           + "0. Quit\n"
                            + "1. Run sentiment analysis on a new file.\n"
                            + "2. Display program introduction.\n"
                            + "3. Display other program information.\n");

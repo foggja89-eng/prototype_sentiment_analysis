@@ -4,17 +4,16 @@
 * TODO: ALL OF THIS WILL EVENTUALLY HAVE COLOR CODED INPUT. The more complicated logic is why everything gets its own method. See DSA Spring 2025 code. 
 * @author James C. Fogg
 * @version 2026.02.03
-*/
+ */
 
 public class Error // Beginning of class ErrorList
 {
-    private void invalidInput()
-    {
-        System.out.println(colors.getColor("yellow") + "Invalid input; please enter valid input.");
+
+    public void invalidInput(Input input) {
+        System.out.println(input.getColor("yellow") + "Invalid input; please enter valid input." + input.getColor("reset"));
     }
 
-    private void invalidExit()
-    {
-        System.out.println(colors.getColor("yellow") + "Something went wrong! Please try again.");
+    public void invalidExit(Input input) {
+        System.out.println(input.getColor("yellow") + "Something went wrong! Please try again." + input.getColor("reset"));
     }
 } //End of class ErrorList

@@ -8,11 +8,13 @@
 * @version 2026.02.03
 */
 
-import java.io.bufferedreader;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
 
 public class Driver //Beginning of class Driver
 {
-    public static void main (String[] args) //Beginning of main method
+    public static void main (String[] args) throws IOException //Beginning of main method
     {
         //Setting up objects that will be needed for the menu system.
         Input input = new Input();
@@ -22,6 +24,6 @@ public class Driver //Beginning of class Driver
         input.loadColors();
 
         //Create a new instance of a BufferedReader object to handle input, and put everything together to run the menu system. 
-        new Menu().menuSystem(new BufferedReader(new InputStreamReader(System.in), input, error));
+        new Menu().menuSystem(new BufferedReader(new InputStreamReader(System.in)), input, error);
     } //End of main method
 } //End of class Driver
