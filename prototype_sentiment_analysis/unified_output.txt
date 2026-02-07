@@ -1,0 +1,99 @@
+positive test
+Welcome to the basic sentiment analysis demo.
+This project relies on a Java based menu system, coupled with Python to run sentiment analysis on a file.
+This is currently intended to run in the terminal, making this extensible through the use of scripting langauges like Bash.
+The menu options for this program are subject to change.
+
+This program was created using Java SE 21 on VS Code.
+Author: James C. Fogg
+Version: 2026.02.06
+
+Main menu:
+0. Quit
+1. Run sentiment analysis on a new file.
+2. Display program introduction.
+3. Display other program information.
+
+[36mEnter your input now: [0m[32m1[0m
+Now selecting a new file to work with. What is the file path?
+[36mEnter your input now: [0m[32mpositive.txt[0m
+[32m=====START OF ANALYSIS=====[0m
+[33m{'polarity': 0.2601161226161226, 'subjectivity': 0.5126740376740376}[0m
+[32m=====END OF ANALYSIS=====[0m
+Main menu:
+0. Quit
+1. Run sentiment analysis on a new file.
+2. Display program introduction.
+3. Display other program information.
+
+[36mEnter your input now: [0m[32m0[0m
+Are you sure you want to quit?[y/n]
+[36mEnter your input now: [0m[32my[0m
+Program terminated... goodbye!
+ 
+neutral test 
+Welcome to the basic sentiment analysis demo.
+This project relies on a Java based menu system, coupled with Python to run sentiment analysis on a file.
+This is currently intended to run in the terminal, making this extensible through the use of scripting langauges like Bash.
+The menu options for this program are subject to change.
+
+This program was created using Java SE 21 on VS Code.
+Author: James C. Fogg
+Version: 2026.02.06
+
+Main menu:
+0. Quit
+1. Run sentiment analysis on a new file.
+2. Display program introduction.
+3. Display other program information.
+
+[36mEnter your input now: [0m[32m1[0m
+Now selecting a new file to work with. What is the file path?
+[36mEnter your input now: [0m[32mneutral.txt[0m
+[32m=====START OF ANALYSIS=====[0m
+[33m{'polarity': 0.08147759103641457, 'subjectivity': 0.255540293040293}[0m
+[32m=====END OF ANALYSIS=====[0m
+Main menu:
+0. Quit
+1. Run sentiment analysis on a new file.
+2. Display program introduction.
+3. Display other program information.
+
+[36mEnter your input now: [0m[32m0[0m
+Are you sure you want to quit?[y/n]
+[36mEnter your input now: [0m[32my[0m
+Program terminated... goodbye!
+ 
+negative test
+Welcome to the basic sentiment analysis demo.
+This project relies on a Java based menu system, coupled with Python to run sentiment analysis on a file.
+This is currently intended to run in the terminal, making this extensible through the use of scripting langauges like Bash.
+The menu options for this program are subject to change.
+
+This program was created using Java SE 21 on VS Code.
+Author: James C. Fogg
+Version: 2026.02.06
+
+Main menu:
+0. Quit
+1. Run sentiment analysis on a new file.
+2. Display program introduction.
+3. Display other program information.
+
+[36mEnter your input now: [0m[32m1[0m
+Now selecting a new file to work with. What is the file path?
+[36mEnter your input now: [0m[32mnegative.txt[0m
+[32m=====START OF ANALYSIS=====[0m
+[33m{'polarity': -0.018946731234866825, 'subjectivity': 0.3517958030669896}[0m
+[32m=====END OF ANALYSIS=====[0m
+Main menu:
+0. Quit
+1. Run sentiment analysis on a new file.
+2. Display program introduction.
+3. Display other program information.
+
+[36mEnter your input now: [0m[32m0[0m
+Are you sure you want to quit?[y/n]
+[36mEnter your input now: [0m[32my[0m
+Program terminated... goodbye!
+ 

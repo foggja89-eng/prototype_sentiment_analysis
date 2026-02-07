@@ -1,0 +1,13 @@
+0
+n
+2
+3
+4
+j
+misc
+0
+something
+1
+bob
+0
+y

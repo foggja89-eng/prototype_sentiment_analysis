@@ -1,0 +1,4 @@
+code_layout.txt: a basic explanation for what I had in mind for the architecture of this project. 
+
+-- this will primarily be a python based project. 
+- I'm trying something new here. I like Java, and making menu systems in Java for its simplicity. So, the menu prototype will be done using Java for its greater efficiency. 

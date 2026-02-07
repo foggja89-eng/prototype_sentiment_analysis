@@ -1,0 +1,4 @@
+1
+negative.txt
+0
+y
