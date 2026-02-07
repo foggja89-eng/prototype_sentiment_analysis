@@ -159,7 +159,7 @@ public class Menu //Beginning of class Menu
     {
         System.out.println("This program was created using Java SE 21 on VS Code.\n"
                            + "Author: James C. Fogg\n"
-                           + "Version: 2026.02.03\n"
+                           + "Version: 2026.02.06\n"
                           );
     }
 
