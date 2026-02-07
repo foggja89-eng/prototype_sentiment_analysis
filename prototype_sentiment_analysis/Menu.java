@@ -20,8 +20,8 @@ public class Menu //Beginning of class Menu
     /*
     * Supporting method for the menu system to run.
     * @param BufferedReader stdin, all input is handled more efficiently this way.
-    * @param Input input, a generic instance of a custom object to handle all input for this project. 
-    * @param Error error, a generic instance of a custom object to handle all error messaging for this project. 
+    * @param Input input, a generic instance of a custom object to handle all input for this project.
+    * @param Error error, a generic instance of a custom object to handle all error messaging for this project.
     * @throws IOException
     */
     public void menuSystem(BufferedReader stdin, Input input, Error error) throws IOException
@@ -29,18 +29,19 @@ public class Menu //Beginning of class Menu
         start();
         byte choice;
 
-        do
+        try
         {
-            mainMenu();
-            choice = input.byteInput(stdin);
-
-            try
+            do
             {
+                mainMenu();
+
+                choice = input.byteInput(stdin);
+
                 switch (choice)
                 {
                 case 0: //handling logic for quitting the program.
-                    System.out.println("Are you sure you want to quit?");
-                    
+                    System.out.println("Are you sure you want to quit?[y/n]");
+
                     if (input.characterInput(stdin) == 'y')
                     {
                         choice = -2;
@@ -76,13 +77,12 @@ public class Menu //Beginning of class Menu
 
                 }
             }
-            catch (Exception e)
-            {
-                error.invalidExit(input);
-            }
-
-        } while (choice != -2);
-
+            while (choice != -2);
+        }
+        catch (Exception e)
+        {
+            error.invalidExit(input);
+        }
         //If execution has broken out of the do-while loop, something has either gone wrong or the user indicated they want to quit.
         System.out.println("Program terminated... goodbye!");
     }
@@ -103,19 +103,32 @@ public class Menu //Beginning of class Menu
         //Set up a new process for the python script to run sentiment analysis. the last parameter will be the file path of the text to work on.
         ProcessBuilder processBuilder = new ProcessBuilder("python3", "Analysis.py", input.generalInput(stdin));
         Process process = processBuilder.start();
-        System.out.println(input.getColor("blue") + "=====START OF ANALYSIS=====" + input.getColor("reset"));
+        System.out.println(input.getColor("green") + "=====START OF ANALYSIS=====" + input.getColor("reset"));
 
         //Putting this in a try-catch block because this might be null.
         try
         {
-            //set up to grab output from the python program. Couldn't just use the already existing BufferedReader object, need one just for the process. 
+            //set up to grab output from the python program. Couldn't just use the already existing BufferedReader object, need one just for the process.
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            String line = reader.readLine();
+            StringBuilder builder = new StringBuilder();
+            String line;
 
-            //if trying to grab the next line of output from the program is not null, print it out.
-            while ((line = stdin.readLine()) != null)
+            //collect all output from the python thread.
+            while ((line = reader.readLine()) != null)
             {
-                System.out.println(line);
+                builder.append(line);
+            }
+
+            //if the output from the python thread is empty, then something went wrong.
+            if (builder.length() > 0)
+            {
+                System.out.println(input.getColor("yellow") + builder.toString() + input.getColor("reset"));
+            }
+            else
+            {
+                System.out.println(input.getColor("yellow")
+                                   + "The provided file either doesn't have any text or does not exist in the directory."
+                                   + input.getColor("reset"));
             }
 
             System.out.println(input.getColor("green") + "=====END OF ANALYSIS=====" + input.getColor("reset"));

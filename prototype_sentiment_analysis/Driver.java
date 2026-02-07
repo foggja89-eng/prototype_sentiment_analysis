@@ -20,10 +20,10 @@ public class Driver //Beginning of class Driver
         Input input = new Input();
         Error error = new Error();
 
-        //Preparing font colors to be used throughout the project. 
+        //Preparing font colors to be used throughout the project.
         input.loadColors();
 
-        //Create a new instance of a BufferedReader object to handle input, and put everything together to run the menu system. 
+        //Create a new instance of a BufferedReader object to handle input, and put everything together to run the menu system.
         new Menu().menuSystem(new BufferedReader(new InputStreamReader(System.in)), input, error);
     } //End of main method
 } //End of class Driver
