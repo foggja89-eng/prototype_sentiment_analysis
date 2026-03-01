@@ -3,7 +3,7 @@
 # At Ashley's suggestion, this will use the spaCy library to do the bulk of the work. 
 # Online research suggests using spacy for preprocessing and textBlob to get the actual sentiment. 
 # Author: James C. Fogg
-# version: 2026.02.06
+# version: 2026.03.01
 
 import spacy, textblob, sys
 from textblob import TextBlob
