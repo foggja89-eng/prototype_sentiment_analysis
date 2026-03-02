@@ -103,7 +103,7 @@ public class Menu //Beginning of class Menu
         // Set up a new process for the python script to run sentiment analysis. the last parameter will be the file path of the text to work on.
         ProcessBuilder processBuilder = new ProcessBuilder("python3.12", "Analysis.py", input.generalInput(stdin));
 
-        // This lets the python program handle printing by inheriting its input/output processes.
+        // This lets the Python program handle printing by making this Java program its input/output processes.
         processBuilder.inheritIO();
 
         // Start the newly spawned python process.
