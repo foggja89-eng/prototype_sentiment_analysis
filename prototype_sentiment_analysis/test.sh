@@ -1,4 +1,4 @@
-clear
+echo
 echo 'formatting java files'
 echo
 astyle --mode=java *.java
@@ -32,11 +32,9 @@ cat negative_output.txt >> unified_output.txt
 echo ' ' >> unified_output.txt 
 echo 
 echo 'testing complete! the individual files can be viewed as positive_output.txt, neutral_output.txt, and negative_output.txt. Or, you can view it all together in unified_output.txt'
+echo 'here is what the sample output looks like--'
 echo
-echo 'current directory and files --'
-echo
-pwd
-echo
-ls
+cat unified_output.txt
 echo
 echo '=====END OF TEST.SH====='
+echo

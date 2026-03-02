@@ -17,7 +17,33 @@ Main menu:
 Now selecting a new file to work with. What is the file path?
 [36mEnter your input now: [0m[32mneutral.txt[0m
 [32m=====START OF ANALYSIS=====[0m
-[33m{'polarity': 0.08147759103641457, 'subjectivity': 0.255540293040293}[0m
+
+=====START OF ANALYSIS.PY=====
+
+Starting sentiment analysis on the provided file using spaCy...
+
+Determining sentiment using en_core_web_sm: a small English language cpu-based model...
+Sentiment polarity score: 0.08147759103641457 
+Sentiment subjectivity score: 0.255540293040293
+
+Determining sentiment using en_core_web_md: a medium English language cpu-based model...
+Sentiment polarity score: 0.08147759103641457 
+Sentiment subjectivity score: 0.255540293040293
+
+Determining sentiment using en_core_web_lg: a large English language cpu-based model...
+Sentiment polarity score: 0.08147759103641457 
+Sentiment subjectivity score: 0.255540293040293
+
+Determining sentiment using en_core_web_trf: a large roBERTa based model that best runs on the GPU...
+Sentiment polarity score: 0.08147759103641457 
+Sentiment subjectivity score: 0.255540293040293
+None
+
+Finsihed sentiment analysis on provided file.
+
+=====END OF ANALYSIS.PY=====
+
+[33mThe provided file either doesn't have any text or does not exist in the directory.[0m
 [32m=====END OF ANALYSIS=====[0m
 Main menu:
 0. Quit

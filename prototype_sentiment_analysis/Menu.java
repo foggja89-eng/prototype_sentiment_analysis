@@ -100,29 +100,23 @@ public class Menu //Beginning of class Menu
     {
         System.out.println("Now selecting a new file to work with. What is the file path?");
 
-        //Set up a new process for the python script to run sentiment analysis. the last parameter will be the file path of the text to work on.
+        // Set up a new process for the python script to run sentiment analysis. the last parameter will be the file path of the text to work on.
         ProcessBuilder processBuilder = new ProcessBuilder("python3.12", "Analysis.py", input.generalInput(stdin));
+
+        // This lets the python program handle printing by inheriting its input/output processes.
+        processBuilder.inheritIO();
+
+        // Start the newly spawned python process.
         Process process = processBuilder.start();
         System.out.println(input.getColor("green") + "=====START OF ANALYSIS=====" + input.getColor("reset"));
 
         //Putting this in a try-catch block because this might be null.
         try
         {
-            //set up to grab output from the python program. Couldn't just use the already existing BufferedReader object, need one just for the process.
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            StringBuilder builder = new StringBuilder();
-            String line;
-
-            //collect all output from the python thread.
-            while ((line = reader.readLine()) != null)
+            //grab the exit code from the python process to figure out if it was successful or not.
+            if (process.waitFor() == 1)
             {
-                builder.append(line);
-            }
-
-            //if the output from the python thread is empty, then something went wrong.
-            if (builder.length() > 0)
-            {
-                System.out.println(input.getColor("yellow") + builder.toString() + input.getColor("reset"));
+                System.out.println(input.getColor("yellow") + "success" + input.getColor("reset"));
             }
             else
             {
@@ -137,7 +131,7 @@ public class Menu //Beginning of class Menu
         {
             //error handling in case something goes wrong with the python code.
             Thread.currentThread().interrupt();
-            System.err.println("Python code was stopped.");
+            System.err.println(input.getColor("yellow") + "Python code was stopped." + input.getColor("reset"));
         }
     }
 

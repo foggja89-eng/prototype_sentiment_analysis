@@ -11,7 +11,7 @@ echo 'adding files...'
 git add .
 echo 'adding commit message...'
 echo
-git commit -m 'updated java code to spawn a python 3.12 process instead of 3.13.' # TODO: this will need to be manually updated every time.
+git commit -m 'first time users can now run ./full_sequence.sh' # TODO: this will need to be manually updated every time.
 echo
 echo 'pushing changes...'
 echo
