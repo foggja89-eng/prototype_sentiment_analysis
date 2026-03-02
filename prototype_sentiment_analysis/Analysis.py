@@ -2,6 +2,7 @@
 # This will rely on the use of an external library to run the analysis, and the result will also be printed out by this class. 
 # At Ashley's suggestion, this will use the spaCy library to do the bulk of the work. 
 # Online research suggests using spacy for preprocessing and textBlob to get the actual sentiment. 
+# IMPORTANT NOTE: the latest version of python that spaCy can work with is 3.12. 
 # Author: James C. Fogg
 # version: 2026.03.01
 
@@ -27,13 +28,11 @@ def read_file(file_path):
 # currently, this returns both the polarity and subjectivity of the text. awaiting further guidance from teammates on this. 
 def get_sentiment(text):
     # cycle through each possible model for spaCy. Process the text using TextBlob to grab all tokens from it, run it through the model, grab the sentiment. 
-    i = 0
-    length = len(pipelines)
-
-    while i <= length:
+    for i in range(len(pipelines)):
         print("\nDetermining sentiment using " + pipelines[i] + ": a " + size_descriptor[i] + " " + description[i] + "...")
         # grab each token and join them together in a list, provided that it is not punctuation or a stop token. Then determine the sentiment.
         sentiment = TextBlob(" ".join([token.text for token in spacy.load(pipelines[i])(text) if not token.is_stop and not token.is_punct])).sentiment
+        #print the results for the polarity score and the subjectivity score. 
         print("Sentiment polarity score:", sentiment.polarity, "\nSentiment subjectivity score:", sentiment.subjectivity)
 
     #print("Grabbing sentiment using en_core_web_sm transformer on spaCy...")
@@ -46,7 +45,7 @@ def get_sentiment(text):
 #<param> file_path, pathway for the text file to be analyzed. 
 #<param> 
 def get_sentiment_all(file_path):
-    print("Analysis.py has started running.")
+    print("\n=====START OF ANALYSIS.PY=====")
 
     try:
         print("\nStarting sentiment analysis on the provided file using spaCy...")
@@ -58,3 +57,6 @@ def get_sentiment_all(file_path):
         return 0
     finally:
         print("\n=====END OF ANALYSIS.PY=====\n")
+
+# run this entire program. 
+get_sentiment_all(file_path)
