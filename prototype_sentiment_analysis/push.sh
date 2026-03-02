@@ -11,7 +11,7 @@ echo 'adding files...'
 git add .
 echo 'adding commit message...'
 echo
-git commit -m 'updated version comment on analysis.py and created new push script.' # TODO: this will need to be manually updated every time. 
+git commit -m 'updated Analysis.py to play around with different transformers and see if there is a difference in results' # TODO: this will need to be manually updated every time.
 echo
 echo 'pushing changes...'
 echo
