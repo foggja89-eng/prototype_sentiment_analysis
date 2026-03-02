@@ -101,7 +101,7 @@ public class Menu //Beginning of class Menu
         System.out.println("Now selecting a new file to work with. What is the file path?");
 
         //Set up a new process for the python script to run sentiment analysis. the last parameter will be the file path of the text to work on.
-        ProcessBuilder processBuilder = new ProcessBuilder("python3", "Analysis.py", input.generalInput(stdin));
+        ProcessBuilder processBuilder = new ProcessBuilder("python3.12", "Analysis.py", input.generalInput(stdin));
         Process process = processBuilder.start();
         System.out.println(input.getColor("green") + "=====START OF ANALYSIS=====" + input.getColor("reset"));
 

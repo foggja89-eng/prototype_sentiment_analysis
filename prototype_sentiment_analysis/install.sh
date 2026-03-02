@@ -51,6 +51,14 @@ echo
 echo 'installing roBERTa based transformer model...'
 python3.12 -m spacy download en_core_web_trf
 
+# TODO: add any additional installations that need to be done. 
+echo
+echo 'installing textblob...'
+python3.12 -m pip install textblob
+echo
+echo 'installing sys...'
+python3.12 -m pip install sys
+
 echo
 echo '=====END OF INSTALL.SH====='
 echo
